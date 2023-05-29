@@ -1,3 +1,18 @@
-<div>
-  <app-livro-lista></app-livro-lista>
-</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/lista" routerLinkActive="active">Catálogo</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/dados" routerLinkActive="active">Novo</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<router-outlet></router-outlet>
+<style>
+  nav a{
+    font-size: 30px;
+  }
+</style>
