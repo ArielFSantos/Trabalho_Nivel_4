@@ -10,13 +10,19 @@ export class ControleEditoraService {
     { codEditora: 2, nome: 'Intrinseca' },
     { codEditora: 3, nome: 'Arqueiro' }
   ];
+    editoraSelecionada: Editora | null = null;
+
 
   getEditoras(): Editora[] {
     return this.editoras;
   }
-
+  setEditora(editora: Editora): void {
+    this.editoraSelecionada = editora;
+  }
   getNomeEditora(codEditora: number): string {
     const editora = this.editoras.find(e => e.codEditora === codEditora);
     return editora ? editora.nome : '';
   }
 }
+
+

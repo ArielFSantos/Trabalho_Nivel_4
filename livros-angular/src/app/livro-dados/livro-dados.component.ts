@@ -11,7 +11,10 @@ import { Livro } from '../livro';
   styleUrls: ['./livro-dados.component.css']
 })
 export class LivroDadosComponent implements OnInit {
-  public livro: Livro = new Livro(0,0,'','',[]);
+  public livro: Livro = new Livro(0, 0, '', '', ['']);
+  public selectedEditora: number = 0; 
+  public editoraSelecionada: string = ''; 
+  
   public autoresForm: string = '';
   public editoras: Array<Editora> = [];
 
@@ -27,8 +30,21 @@ export class LivroDadosComponent implements OnInit {
 
   incluir(event: Event): void {
     event.preventDefault();
+    this.livro.codEditora = this.selectedEditora;
     this.livro.autores = this.autoresForm.split('\n');
+    
+    const editora: Editora = {
+      codEditora: this.selectedEditora,
+      nome: this.editoraSelecionada
+    };
+    
+    this.servEditora.setEditora(editora);
+    
     this.servLivros.incluir(this.livro);
     this.router.navigateByUrl('/lista');
+  }
+
+  atualizarNomeEditora(): void {
+    this.editoraSelecionada = this.servEditora.getNomeEditora(this.selectedEditora);
   }
 }

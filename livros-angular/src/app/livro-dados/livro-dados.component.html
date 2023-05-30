@@ -1,29 +1,30 @@
 <main class="container">
-  <h2>Cadastrar Livro</h2>
-
-  <form (submit)="incluir($event)" ngNoForm>
-    <div class="form-group">
-      <label for="tituloInput">Título:</label>
-      <input type="text" id="tituloInput" class="form-control" required [(ngModel)]="livro.titulo">
-    </div>
-
-    <div class="form-group">
-      <label for="resumoTextarea">Resumo:</label>
-      <textarea id="resumoTextarea" class="form-control" rows="3" [(ngModel)]="livro.resumo"></textarea>
-    </div>
-
-    <div class="form-group">
-      <label for="editoraSelect">Editora:</label>
-      <select id="editoraSelect" class="form-control" required [(ngModel)]="livro.codEditora">
-        <option *ngFor="let editora of editoras" [value]="editora.codEditora">{{ editora.nome }}</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="autoresTextarea">Autores:</label>
-      <textarea id="autoresTextarea" class="form-control" rows="3" [(ngModel)]="autoresForm"></textarea>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Cadastrar</button>
-  </form>
-</main>
+    <h2>Cadastrar Livro</h2>
+  
+    <form (submit)="incluir($event)" ngNoForm>
+      <div class="form-group">
+        <label for="tituloInput">Título:</label>
+        <input type="text" id="tituloInput" class="form-control" required [(ngModel)]="livro.titulo">
+      </div>
+  
+      <div class="form-group">
+        <label for="resumoTextarea">Resumo:</label>
+        <textarea id="resumoTextarea" class="form-control" rows="3" [(ngModel)]="livro.resumo"></textarea>
+      </div>
+  
+      <div class="form-group">
+        <label for="editoraSelect">Editora:</label>
+        <select id="editoraSelect" class="form-control" required [(ngModel)]="livro.codEditora">
+          <option *ngFor="let editora of editoras" [value]="editora.codEditora">{{ editora.nome }}</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="autoresTextarea">Autores:</label>
+        <textarea id="autoresTextarea" class="form-control" rows="3" [(ngModel)]="autoresForm"></textarea>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+  </main>
+  
