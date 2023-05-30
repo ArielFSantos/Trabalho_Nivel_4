@@ -11,10 +11,11 @@ import { Livro } from '../livro';
   styleUrls: ['./livro-dados.component.css']
 })
 export class LivroDadosComponent implements OnInit {
-  public livro: Livro = new Livro(0, 0, '', '', ['']);
-  public selectedEditora: number = 0; 
-  public editoraSelecionada: string = ''; 
   
+  public selectedEditora: number = 0; 
+  public editoraSelecionada: string = 'aaaaaaaaaa'; 
+  public livro: Livro = new Livro(1, 1, '', '', ['']);
+
   public autoresForm: string = '';
   public editoras: Array<Editora> = [];
 
@@ -35,12 +36,13 @@ export class LivroDadosComponent implements OnInit {
     
     const editora: Editora = {
       codEditora: this.selectedEditora,
-      nome: this.editoras.find(e => e.codEditora === this.selectedEditora)?.nome || ''
+      nome: this.editoraSelecionada
     };
     
     this.servEditora.setEditora(editora);
     
     this.servLivros.incluir(this.livro);
+
     this.router.navigateByUrl('/lista');
   }
 

@@ -14,7 +14,7 @@
   
       <div class="form-group">
         <label for="editoraSelect">Editora:</label>
-        <select id="editoraSelect" class="form-control" required [(ngModel)]="selectedEditora">
+        <select id="editoraSelect" class="form-control" required [(ngModel)]="editoraSelecionada">
           <option *ngFor="let editora of editoras" [value]="editora.codEditora">{{ editora.nome }}</option>
         </select>
 

@@ -4,7 +4,7 @@ export class Livro {
   public titulo: string;
   public resumo: string;
   public autores: string[];
- 
+
 
   constructor(codigo: number, codEditora: number, titulo: string, resumo: string, autores: string[]) {
     this.codigo = codigo;
