@@ -14,9 +14,10 @@
   
       <div class="form-group">
         <label for="editoraSelect">Editora:</label>
-        <select id="editoraSelect" class="form-control" required [(ngModel)]="livro.codEditora">
+        <select id="editoraSelect" class="form-control" required [(ngModel)]="selectedEditora">
           <option *ngFor="let editora of editoras" [value]="editora.codEditora">{{ editora.nome }}</option>
         </select>
+
       </div>
   
       <div class="form-group">

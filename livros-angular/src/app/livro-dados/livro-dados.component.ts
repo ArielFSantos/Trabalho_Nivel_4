@@ -35,7 +35,7 @@ export class LivroDadosComponent implements OnInit {
     
     const editora: Editora = {
       codEditora: this.selectedEditora,
-      nome: this.editoraSelecionada
+      nome: this.editoras.find(e => e.codEditora === this.selectedEditora)?.nome || ''
     };
     
     this.servEditora.setEditora(editora);
