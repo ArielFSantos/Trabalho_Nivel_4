@@ -5,6 +5,7 @@ import { Editora } from './editora';
   providedIn: 'root'
 })
 export class ControleEditoraService {
+  public selectedEditora: number=0;
   editoras: Editora[] = [
     { codEditora: 1, nome: 'Editora Aleph' },
     { codEditora: 2, nome: 'Intrinseca' },
@@ -16,11 +17,9 @@ export class ControleEditoraService {
   getEditoras(): Editora[] {
     return this.editoras;
   }
-  setEditora(editora: Editora): void {
-    this.editoraSelecionada = editora;
-  }
+  
   getNomeEditora(codEditora: number): string {
-    const editora = this.editoras.find(e => e.codEditora === codEditora);
+    const editora = this.editoras.find(e => e.codEditora == codEditora);
     return editora ? editora.nome : '';
   }
 }

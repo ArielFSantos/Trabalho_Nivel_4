@@ -6,16 +6,14 @@ import { Editora } from '../editora';
 import { Livro } from '../livro';
 
 @Component({
+  
   selector: 'app-livro-dados',
   templateUrl: './livro-dados.component.html',
   styleUrls: ['./livro-dados.component.css']
 })
 export class LivroDadosComponent implements OnInit {
   
-  public selectedEditora: number = 0; 
-  public editoraSelecionada: string = 'aaaaaaaaaa'; 
-  public livro: Livro = new Livro(1, 1, '', '', ['']);
-
+  public livro: Livro = new Livro(0,0,'','',[]);
   public autoresForm: string = '';
   public editoras: Array<Editora> = [];
 
@@ -23,7 +21,7 @@ export class LivroDadosComponent implements OnInit {
     private servEditora: ControleEditoraService,
     private servLivros: ControleLivrosService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.editoras = this.servEditora.getEditoras();
@@ -31,22 +29,19 @@ export class LivroDadosComponent implements OnInit {
 
   incluir(event: Event): void {
     event.preventDefault();
-    this.livro.codEditora = this.selectedEditora;
-    this.livro.autores = this.autoresForm.split('\n');
-    
-    const editora: Editora = {
-      codEditora: this.selectedEditora,
-      nome: this.editoraSelecionada
+    const autores = this.autoresForm.split('\n');
+  
+    const novoLivro: Livro = {
+      codigo: this.servLivros.livros.reduce((max, l) => (l.codigo > max ? l.codigo : max), 0) + 1,
+      codEditora: this.livro.codEditora,
+      titulo: this.livro.titulo,
+      resumo: this.livro.resumo,
+      autores: autores
     };
-    
-    this.servEditora.setEditora(editora);
-    
-    this.servLivros.incluir(this.livro);
-
+  
+    this.servLivros.incluir(novoLivro);
+  
     this.router.navigateByUrl('/lista');
   }
-
-  atualizarNomeEditora(): void {
-    this.editoraSelecionada = this.servEditora.getNomeEditora(this.selectedEditora);
-  }
+  
 }
